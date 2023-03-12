@@ -17,5 +17,13 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['react'],
-  rules: {}
+  rules: {
+    'react/self-closing-comp': [
+      'warn',
+      {
+        component: true,
+        html: true
+      }
+    ]
+  }
 }
