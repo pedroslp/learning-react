@@ -5,10 +5,17 @@ import { Square } from './components/Square.jsx'
 import { WinnerModal } from './components/WinnerModal.jsx'
 import { TURNS } from './constants.js'
 import { checkEndGame, checkWinner } from './logic/board.js'
+import { resetGameStorage, saveGameStorage } from './logic/storage/index.js'
 
 function App() {
-  const [board, setBoard] = useState(Array(9).fill(null))
-  const [turn, setTurn] = useState(TURNS.X)
+  const [board, setBoard] = useState(() => {
+    const boardFromStorage = window.localStorage.getItem('board')
+    return boardFromStorage ? JSON.parse(boardFromStorage) : Array(9).fill(null)
+  })
+  const [turn, setTurn] = useState(() => {
+    const turnFromStorage = window.localStorage.getItem('turn')
+    return turnFromStorage ?? TURNS.X
+  })
   // null no hay ganador y false empate
   const [winner, setWinner] = useState(null)
 
@@ -16,6 +23,8 @@ function App() {
     setBoard(Array(9).fill(null))
     setTurn(TURNS.X)
     setWinner(null)
+
+    resetGameStorage()
   }
 
   const updateBoard = (index) => {
@@ -29,6 +38,8 @@ function App() {
     // Cambiar turno
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
+    // Guardar partida
+    saveGameStorage({ board: newBoard, turn: newTurn })
     // Revisar si hay ganador
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
@@ -38,6 +49,12 @@ function App() {
       setWinner(false) // Empate
     }
   }
+
+  /*   // Array de dependencias (puede ser opcional y no ponerlo)
+  useEffect(() => {
+    // Como minimo se ejecuta una vez
+
+  }, []) // Cada vez que hay un cambio de una dependencia va a ejecutarse */
 
   return (
     <main className='board'>
