@@ -1,6 +1,10 @@
+import { FollowMouse } from './components/FollowMouse.jsx'
+
 function App() {
   return (
-    <h3>Proyecto 3</h3>
+    <main>
+      <FollowMouse />
+    </main>
   )
 }
 
