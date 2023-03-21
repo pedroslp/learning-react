@@ -1,4 +1,8 @@
-# Learning-react
+<div align="center">
+
+# Learning-react ⚛️
+
+</div>
 
 ## 📹 Videos de la clases
 
