@@ -9,10 +9,10 @@ export function useCatImage({ fact }) {
   useEffect(() => {
     if (!fact) return
 
-    const threeFirstWord = fact.split(' ', 3).join(' ')
+    const threeFirstWords = fact.split(' ', 3).join(' ')
 
     fetch(
-      `https://cataas.com/cat/says/${threeFirstWord}?size=50&color=red&json=true`
+      `https://cataas.com/cat/says/${threeFirstWords}?size=50&color=red&json=true`
     )
       .then((res) => res.json())
       .then((response) => {
