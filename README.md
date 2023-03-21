@@ -4,7 +4,7 @@
 
 </div>
 
-## 📹 Videos de la clases
+## 📹 Videos de las clases
 
 - 01: [Introducción a React](https://www.twitch.tv/videos/1704282150?filter=archives&sort=time)
 - 02: [React Hooks: useState y useEffect](https://www.twitch.tv/videos/1711159530?filter=archives&sort=time)
